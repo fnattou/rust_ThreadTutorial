@@ -25,14 +25,14 @@ impl Future for Hello {
     fn poll(mut self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<()> {
         match (*self).state {
             StateHello::HELLO => {
-                print!("Hello, ");
+                print!("\n Hello, \n");
                 //WORLD状態に移行
                 (*self).state = StateHello::WORLD;
                 cx.waker().wake_by_ref();//自身を実行キューにエンキュー
                 Poll::Pending //再度呼び出し可能
             }
             StateHello::WORLD => {
-                print!("World!");
+                print!("\n World! \n");
                 //END状態に移行
                 (*self).state = StateHello::END;
                 cx.waker().wake_by_ref();//自身を実行キューにエンキュー
@@ -49,5 +49,4 @@ pub fn test() {
     let executor = Executor::new();
     executor.get_spawner().spawn(Hello::new());
     executor.run();
-    print!("aa");
 }

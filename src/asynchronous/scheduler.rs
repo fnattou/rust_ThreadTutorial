@@ -41,7 +41,9 @@ impl Executor {
     }
     pub fn run(&self) {
         //チャネルからTaskを受信して順に実行
-        while let Ok(task) = self.receiver.recv() {
+        for _ in 0..3
+        {
+            let task = self.receiver.recv().unwrap();
             //コンテキストを生成
             let mut future
                     = task.future.lock().unwrap();

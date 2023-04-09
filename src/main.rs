@@ -1,6 +1,6 @@
 
 mod asynchronous;
-
+use asynchronous::scheduler_test::test;
 fn main() {
-    asynchronous::my_coroutine_test::test();
+    test();
 }

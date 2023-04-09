@@ -1,2 +1,2 @@
-pub mod my_coroutine;
-pub mod my_coroutine_test;
+pub mod scheduler;
+pub mod scheduler_test;
